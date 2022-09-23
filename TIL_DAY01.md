@@ -136,7 +136,8 @@ HTML도 마크업 언어인데, 글에 제목의 역할을 부여할 때 <h1>제
 |git commit|ADD한 내용을 반영해준다|옵션 -M을 사용해서 코맨트를 달아주면 관리하기수월하다. |
 |git log|COMIIT 내역확인.|--ONELINE으로 한줄로 출력할 수 있다.|
 |git chekout [COMMIT ID]|지정한 COMMIT ID에 시점을 둔다.|-B <브랜치>하면 생성과 체크아웃을 같이|
-|git push [주소이름] [repository]명|Git Hub에 로컬 커미션을 올린다.| -|
+|git push [주소이름] [브랜치]명|Git Hub에 로컬 커미션을 올린다.| -|
+|rm -f .git/index.lock|중복된 커밋삭제하기|-|
 ------------------
 
 ### Git Hub 연결
