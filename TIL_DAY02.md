@@ -174,7 +174,7 @@ git log -p  # 커밋마다 차이 보기 옵션
 <details>
 <summary>리모트</summary>
 
-##
+## 리모트명령어
 
 ```bash
 # 로컬 저장소와 원격 저장소를 연결
