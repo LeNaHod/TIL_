@@ -41,15 +41,15 @@ UI/UX특강
 (GUI에 대한 내용은 TIL1일차에 간략하게 나와있다.)
 
 
-## [2] 실생활의 UX실폐사례를 알아보자
+## [2] 실생활의 UX실패사례를 알아보자
 
 
 ### [2-1] 마포대교
-![마포대교](https://cdn.news.bbsi.co.kr/news/photo/201609/775698_45901_230.JPG)
+![마포대교](https://post-phinf.pstatic.net/MjAxOTAxMzBfMjI5/MDAxNTQ4ODQzNDQ5NDIz.zTumkZmxV7Suog8cGy1EQjvgFIdqKALydDq0KiB8_OMg.cRZpN4tCAMMJMZ3CsapxgN4BRQJbySgewfpjBVKQyQsg.JPEG/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg?type=w1200)
 
-    자살 방지용으로 마포대교에 문구를넣은건 UX실폐사례라고 할수있다.
+    자살 방지용으로 마포대교에 문구를넣은건 UX실패사례라고 할수있다.
     오히려 역으로 자살률이 높아졌기 때문이다.
-    실폐요인으론 사용자 조사가 깊이 이루어지지 않았다고 본다.
+    실패요인으론 사용자 조사가 깊이 이루어지지 않았다고 본다.
 
 
 

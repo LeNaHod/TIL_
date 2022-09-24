@@ -66,6 +66,15 @@ git clone URL
    4. 이후 권한을 부여받은 유저들은 Clone을 받고 이후 pull,add,commit,push를 통해 협업을할수있다.
 [끝말잇기 게임 참여자료](https://github.com/cyctal/word-relay.git) 
 
+★ **git non-fast-forward 오류 해결하기**
+
+    Clone으로 받아오지않은 로컬의 md파일을(Branch는 master1개) 원격에서(Git Hub)에서 수정했을때,
+    로컬에있는 파일을 pull로 업데이트해줘야한다. Clone으로 받아왔을땐 git pull만 쓰면 됐었는데
+    그건 Clone의경우고 이 상황이랑은 다르므로, pull을 하지않고 push를 시도하면 
+    ★non-fast-forward★ 오류가 발생하게된다.
+        해결방법: git pull <reomote> <branch>인데, git pull origin(remote했을때 쓴 이름) master하면된다. 
+
+
 # [3]Branch(분기)
 
 ![브랜치이미지](https://git-scm.com/book/en/v2/images/advance-master.png)
