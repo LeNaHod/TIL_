@@ -163,7 +163,7 @@ RETURN NUMBER IS  --입력받을값의 리턴타입
    v_sal emp.sal%type := 0;
    v_comm emp.comm%type := 0;
 BEGIN   --실행부
-   select sal,comm into v_sal,v_comm from emp 
+   select sal,comm into v_sal,v_comm from emp --v_empno에서 받아온 empno를가지고 일치하는 sal,comm을찾아v_sal,v_comm에 넘겨준다
    where empno = v_empno;    --empno는 v_empno에서 받은값이다.대입  
    v_tot := (v_sal*12)+nvl(v_comm,0);
    return v_tot;
