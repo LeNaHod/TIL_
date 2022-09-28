@@ -579,6 +579,25 @@ from emp join dept using(deptno);
 
 
 --↑ LOC가 중복되어서 나옴.
+--↓해결!아래 정답과 동일
+
+--ORACLE
+
+select DISTINCT d.dname DNAME,d.loc LOC,
+COUNT(*) OVER(PARTITION BY d.deptno) as "NUMBER OF PEOPLE",
+ROUND(AVG(sal) OVER(PARTITION BY e.deptno),1) SALARY
+from emp e ,dept d
+where e.deptno = d.deptno(+)and e.deptno is not null
+order by d.dname;
+
+--ANSI
+
+select DISTINCT dname as DNAME,loc as LOC,
+COUNT(*) OVER(PARTITION BY loc) as "NUMBER OF PEOPLE",
+ROUND(AVG(sal) OVER(PARTITION BY deptno),1) as SALARY
+from emp join dept using(deptno) 
+where deptno is not null
+order by dname;
 
 ----Q11)정답. 출력행이 3개(LOC의갯수만큼)
 
