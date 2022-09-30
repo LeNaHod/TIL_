@@ -19,7 +19,7 @@ ex)처음보는 학생의 키를 구한다던가, 처음보는 학생의 모의�
 ## merge와 db join
 
 select ename,deptno,dname from emp join dept using(deptno) 
- 
+
 and
 
 on(emp.deptno=deptno.deptno02)
@@ -288,5 +288,168 @@ group by loc;
 
 emp_m=pd.merge(emp,dept,on='deptno')
 emp_m.groupby('loc')['sal'].sum().reset_index()
+
+```
+
+## sec05:판다스를 이용한 데이터 프레임,병합,연결
+    
+    -01. concat()을 이용한 프레임 병합(concat([df01,df02],axis=0/1)0열1행
+    -02. merge()을 이용한 연결,병합 고유값을 기준으로 두df를 합쳐준다.
+                (pd.merge(df_left, df_right, how='inner', on=None))=db의join같은개념
+    -pro02(데이터 병합)
+
+## sec06:시각화
+
+    - 데이터 수집 -> 데이터 정제 -> 데이터 분석 ->데이터 시각화
+    - matplotlib:파이썬 표준 시각화 라이브러리, 2D평면을 표현 그래프
+                  -라인플롯차트(꺾은선형.시간변화에씀)
+                  -바 차트(비교,랭킹)
+                  -파이차트(점유율)
+                  -히스토그램(분표)
+                  -산점도(연관성)
+    
+    - seaborn : 저위의 matplotlib외의 애들을 처리할때
+
+
+## sec05,sec06의 예제를 풀어보자
+
+```python
+# csv로드
+df=pd.read_csv('A:\ds_work\data\movies_train.csv')
+df
+
+#천만관중을 달성한 영화를 그래프로 나타내보자.
+천만_df=df[df['box_off_num']>=10000000][['title','box_off_num']]
+천만_df
+
+#그래프 구현
+import matplotlib.pyplot as plt  #★★★★★ import꼭하기 
+dir(plt)으로 무엇을 사용할 수 있는지 확인가능
+
+fig, ax = plt.subplots()
+
+fruits = ['apple', 'blueberry', 'cherry', 'orange']
+counts = [40, 100, 30, 55]
+bar_labels = ['red', 'blue', '_red', 'orange']
+bar_colors = ['tab:red', 'tab:blue', 'tab:red', 'tab:orange']
+
+ax.bar(fruits, counts, label=bar_labels, color=bar_colors)
+
+ax.set_ylabel('fruit supply')
+ax.set_title('Fruit supply by kind and color')
+ax.legend(title='Fruit color')
+
+plt.show()
+
+#기본설정되어있는 폰트를 출력
+import matplotlib.font_manager as fm #각종 폰트관리
+plt.rcParams['font.family'] 
+#기본폰트를 굴림으로설정
+plt.rcParams["font.family"]='gulim'
+
+#내컴퓨터에있는 폰트를 다 출력
+fl = fm.findSystemFonts(fontpaths = None, fontext = 'ttf')
+fl[:]
+
+
+#천만관중 달성영화 리스트를 타이틀 별로 그래프생성
+plt.figure(figsize=(10,6))
+plt.rcParams["font.family"]='gulim'
+plt.rcParams["font.size"]=12
+plt.bar(천만_df['title'],천만_df['box_off_num'], color='blue')
+plt.title("천만관중 달성 영화",fontsize=12)
+plt.xlabel("영화제목")
+plt.ylabel("관중수",fontsize=15)
+plt.show()
+type(fig)
+
+#장르별 관객수 평균 그래프를 그려보자
+장르별관객수 =df.groupby('genre')['box_off_num'].mean()
+장르별관객수 =장르별관객수.reset_index()
+장르별관객수
+
+plt.figure(figsize=(15,6))
+plt.rcParams["font.family"]='gulim'
+plt.rcParams["font.size"]=12
+plt.bar(장르별관객수['genre'],장르별관객수['box_off_num'], color='pink')
+plt.title("장르별 관객수 평균",fontsize=20)
+plt.xlabel("영화장르")
+plt.ylabel("관객수",fontsize=15)
+plt.show()
+type(fig)
+
+#ex1)release_time을 시계열 데이터로 변환 /년도별 최대 관객수
+df['n_date']=pd.to_datetime(df['release_time'])
+df.head(5)
+
+#ex1-1)년도별 평균 관객수를추출하자
+year_mean = df.groupby('year')['box_off_num'].mean()
+year_mean =year_mean.reset_index()
+#그래프부분
+plt.ylim([5000000,15000000])
+plt.plot(year_max['year'],year_max['box_off_num'],color='blue',marker='o')
+plt.show()
+
+#ex02)한 화면에 그래프 2개를 보고싶다.
+#plot는 그래프의 x,y축 설정과 기타 스타일을 줄수있다.
+#axis() 함수를 이용해서 축의 범위 [xmin, xmax, ymin, ymax]
+plt.figure(figsize=(10,10)) #그래프 출력사이즈 figsize=(높이,너비)
+plt.subplot(1,2,1)          #한줄에 두개를 주는데 첫번째 칸=subplot(행,컬럼,인덱스) 여러개의 그래프를 하나의그림에 나타낸다.
+plt.ylim([100000,15000000]) #축 표시범위.ylim이니까 y축의 표시범위이다.xlim도있고, axis([x축범위],[y축범위])로 한번에지정가능.
+plt.plot(year_max['year'],year_max['box_off_num'],color='green',marker='*') #plot(x축의값,y축의값.하나입력시y축의값,컬러,마커값(ㅇ표시))    #마커종류 'o'=동그라미,'^'=세모,'*'=별,'s'=사각형
+plt.subplot(2,2,2)                      #2행2열2번째인덱스. 
+plt.plot(year_mean['year'],year_mean['box_off_num'],color='red',marker='o')
+plt.show()
+
+# 스태프의 분포도 (hist그래프)
+staff=df['num_staff']
+#그래부분
+plt.hist(staff,bins=10,color='green',alpha=0.3,) #hist(데이터,bin:구간,alpha,histtype= : 그래프종류 기본bar타입)
+plt.title('스탭인원수에 대한 분포도')   #그래프 타이틀
+plt.show()
+
+
+#ex04)영화등급의 비율을 파이차트로 만들어보자.
+st=df['screening_rat'].value_counts() #분기 구간나누기
+st  #확인
+
+#그래프부분
+plt.pie(st,labels=st.keys(),autopct="%1.1f%%") #라벨입력은 두번째인자에 입력 가능한데,st의키값인 15세,12세,전체관람가를 반환.
+plt.show()                          #autopct:부채꼴안에 입력될 값(=수치)을 각 영역에 할당해줌(ex)100이면4개에100심어줌)
+                                    #autopct="%1.1f%%" or "%.1f%%"를 쓰면 각 점유율을 %로 계산해준다.
+
+```
+
+## 파이썬 모듈을 이용해서 csv파일을 조작해보자
+
+```python
+#파이썬 모듈을 이용한 csv파일 불러오기
+import csv #import해서 써야한다.
+#dir(csv)
+file = csv.reader('A:\ds_work\data\emp.csv') #csv를 불러오는reader
+file
+type(file)
+
+pandas 는         pd.read_csv(경로)
+파이썬 모듈 csv 는 csv.reader(경로)
+
+#3)전체 내용을 출력 하자. _파일의 내용을 한행씩 리스트객체에 담아서출력(csv는 꼭 이렇게!)\
+
+for emp_list in file :
+    print(emp_list)
+
+#4)파일을 오픈한 객체를 csv의 reader로 읽어오자.
+import csv
+file = open('A:\ds_work\data\emp.csv') #file이라는애안에 emp.csv를 넣고,
+emp_csv=csv.reader(file) #emp_csv라는 객체안에 emp.csv를 읽어와서 담는다.
+
+
+flag = True    #별다섯개! flag는 bool타입(논리타입 t/f값밖에못가진다 1,0값 두개만있음) 특정 상황?조건을 참/거짓으로 판단할때 사용함
+for res in emp_csv:       #자료가 많으니까 다 비교해야하니 for문
+    if flag:              #위의 flag가 true인상태에서 if flag= if true와같다. 들어오는 데이터를 트루처리함
+        print(res[0], res[5])    #res[0]과 res[5]가 각 ename과 sal(컬럼명)을 반환한다. 인덱싱안댐
+        flag = False             #컬럼명들을 한줄 만나자마자, flag=false처리해버림. 
+    else:                        #else -> 그외의상황,자연스럽게 false로 넘어감
+        print(res[0], int(res[5]),type(int(res[5])))  #그래서 숫자형문자 데이터들(5000,300..)들은 int형으로 바꿀수있다. sal 아래값들이 int로 변해서 이제 연산할수있게되었다.
 
 ```
