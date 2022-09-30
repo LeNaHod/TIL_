@@ -18,8 +18,10 @@ TIL DAY 08 (22_09_30)
 ex)처음보는 학생의 키를 구한다던가, 처음보는 학생의 모의고사 점수 추측 등.
 ## merge와 db join
 
->select ename,deptno,dname from emp join dept using(deptno)
-or
+select ename,deptno,dname from emp join dept using(deptno) 
+ 
+and
+
 on(emp.deptno=deptno.deptno02)
 
 ★위의 코드를 merge로 바꿔보자
