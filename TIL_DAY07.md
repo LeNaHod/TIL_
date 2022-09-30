@@ -345,7 +345,7 @@ df.groupby('screening_rat')
 df.groupby('screening_rat').size
 #그룹의 개수를 리턴받자
 df_g=df.groupby('screening_rat')
-df_g.ngroups
+df_g.ngroups #그룹개수가나온다.(ex job의 종류가 5개면5출력)
 
 #2)그룹핑 상태에서 특정열을 기준으로 객체가 키값을 리턴받자.
 df_g.groups.keys() #분할 한 그룹의 키값을 리턴 groups.keys()가 셋트.그룹했어도붙여야함
