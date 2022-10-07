@@ -614,18 +614,12 @@ TIL DAY 11(22-10-06)
         circle.style.height=rnum+"px";
         
         var a=circle.style.width=rnum;
-        var b=circle.style.height=rnum;
-
-        var c=a*b;//넓이
-        var d=Math.ceil(Math.sqrt(c/Math.PI));//반지름
+        var d=Math.ceil(a/2); //반지름
         var ab=Math.ceil(Math.PI*(Math.pow(d,2)));
         var abc=Math.ceil(d*2*Math.PI);
-       //alert(c);
-       //alert(d);
-       //alert(ab);
-       //alert(abc);
-        this.getwh=function(){
-                return c;
+
+        this.getw=function(){
+                return a;
             }
         this.getr=function(){
                 return d;
@@ -639,7 +633,7 @@ TIL DAY 11(22-10-06)
                 return abc;
             }  
         circle.style.borderRadius=Math.floor(rnum/2)+"px"; 
-        //같은값은한번만 줘도된다.(4개가 다같은값일거면.위의 rgb는세개가 다 다른값이여야해서 세번)
+    
 
     }
 
@@ -670,17 +664,17 @@ TIL DAY 11(22-10-06)
             var randomc=new randomCircle();
             //넓이 : pi * r * r
             var are = document.getElementById("area");
-            are.innerHTML = "(높+넓): "+randomc.getwh()+" + (반)"+randomc.getr()+"="+
+            are.innerHTML = "(지름):"+randomc.getw()+" (반): "+randomc.getr()+"="+
             randomc.getara()
             
             //둘레 : pi *r *2
             var len1 =document.getElementById("len");
             len1.innerHTML =randomc.circlefer();
-        
-        }
+       }
 
     </script>
 </body>
+
 
 ```
 </details> 
