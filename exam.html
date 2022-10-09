@@ -6,6 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href= "./exam.css">
+    <script>
+        var cut=1;
+        function changeimgR(){
+            var mimg=document.getElementById("img1");
+            if(cut<6){
+                mimg.setAttribute("src","chage"+(++cut)+".jpg");
+                cut=cut%5;
+            }
+            else{
+                cut=1;
+               
+               }
+        }
+        
+        function changeimgL(){
+            var mimg=document.getElementById("img1");
+            if(cut>1){
+                mimg.setAttribute("src","chage"+(--cut)+".jpg");
+               
+            }else{
+                cut=6;
+                
+            }
+            
+        }
+        
+    </script>
 </head>
 <body>
     <div class="oracletop">
@@ -18,7 +45,8 @@
     <div class="logimg">
         <img src="./pngwing.com.png">
     </div>
-    <ul id="mainmenu">
+    <div id="mainmenu">
+    <ul>
         <a href="#item">제품</a>
         <a href="#work">산업</a>
         <a href="#resce">리소스</a>
@@ -27,7 +55,7 @@
         <a href="#developer">개발자</a>
         <a href="#evt">이벤트</a>
     </ul>
-
+    </div> 
     <div class="tbcdiv">
         <div id="topimg">
             <img src="rh08-top-bg (1).webp">
@@ -37,24 +65,80 @@
         </div>
     </div>
     <div id="mysql">
-        <img src="rh08-mysql-heatwave.jpg">
+        <img src="chage1.jpg" id="img1">
+       
             <div id="commt">
+                <br>
                 <h2>Oracle Announces MySQL HeatWave on AWS</h2>
                 
-                <p>AWS users can run transaction processing, real-time analytics, and machine learning workloads within a single MySQL database</p>
+                <p id="con">AWS users can run transaction processing, real-time analytics, and machine learning workloads within a single MySQL database</p>
                 <hr3 id="line"></hr3>
-                <input type="button" value="Read the releaase" id="btn"></button>     
+                <input type="button" value="Read the release" id="btn"></button>     
             </div>
-    </div> 
-    
-    <div> 
-        <img src="./rh02-panel2.jpg" id="rhpane2">
-        <img src="./rh02-panel1.jpg" id="rhpane1">
-        <img src="./rw-pattern9.webp" id="rwpattern">
-            <div>
-                
-            </div>
+            <button id="Rbtn" onclick="changeimgR()"></button>
+            <button id="Lbtn" onclick="changeimgL()"></button>
     </div>
+    
+    <div>
+        <div class="rh02div">
+        <img src="./rh02-panel2.jpg" id="rhpane2">
+            <div id="rh02_2title">
+                <b>Oracle Colud</b>
+                <h1>Applications</h1>
+            </div>
+
+            <div id="rh2_2text">
+                <p>A complete suite of cloud applications delivering consistente processes</p>
+                <p id="p2">and data across your business</p>        
+            </div>
+            <button id="rh2_2btn">Explore colud apps</button>
+
+        <img src="./rh02-panel1.jpg" id="rhpane1">
+            <div id="rh02_1title">
+                <b>Oracle Colud</b>
+                <h1>Infrastructure</h1>
+            </div>
+
+            <div id="rh02_1text">
+                <p>An automated,secure platform for migrating enterprise workloads and</p>
+                <p id="p4">building new cloud native apps</p> 
+            </div>
+            <button id="rh2_1btn">Explore OCI</button>
+        </div>
+
+    </div>
+    <div>
+        <img src="./rw-pattern9.webp" id="rwpattern">
+        <div id="rh_scp">
+            <h1>Oracle recognized as SCP<br>leader</h1>
+            <p id="p5">IDC MarketScape designates Oracle as a Leader<br>
+                       in its Worldwide Holistic Supply Chain Planning<br>
+                       2022 Vendor Assessment.</p>
+            <img src="./rh09-idc-marketscape.jpg" id="rh09_scp">
+            <a href="https://www.oracle.com/news/announcement/oracle-recognized-as-a-leader-in-the-idc-marketscape-2022-09-27/">Read the release</a>
+        </div>
+        <div id="rh_java">
+            <h1>Oracle release Java19</h1>
+            <p id="p6">The latest version of the world’s No. 1<br>
+                programming language and development<br>
+                platform delivers thousands of performance,<br>
+                stability, and security improvements.</p>
+                <img src="rh09-java-19.jpg" id="rh09_java">
+                <a href="https://www.oracle.com/news/announcement/oracle-releases-java-19-2022-09-20/">Read the press release</a>
+        </div>
+        <div id="rh_cloud">
+            <h1>Oracle opens its first cloud region in Spain</h1>
+            <p id="p7">The new Madrid region will deliver hundreds of<br>
+                OCI services to help organizations improve their<br>
+                IT and operational efficiency, get insights from<br>
+                their data faster, and build and deploy cloud-<br>
+                native applications.</p>
+            <img src="rh09v3-cloud-region-spain.jpg" id="rh09_cloud">
+            <a href="https://www.oracle.com/news/announcement/oracle-opens-first-cloud-region-in-spain-2022-09-13/">Read the release</a>
+        </div>
+    </div>
+
+
   
 </body>
 </html>
