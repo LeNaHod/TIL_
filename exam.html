@@ -7,29 +7,37 @@
     <title>Document</title>
     <link rel="stylesheet" href= "./exam.css">
     <script>
-        var cut=1;
+        var cut=0;
+        var imglist=["chage1.jpg","chage2.jpg","chage3.jpg","chage4.jpg","chage5.jpg"]
         function changeimgR(){
-            var mimg=document.getElementById("img1");
-            if(cut<6){
-                mimg.setAttribute("src","chage"+(++cut)+".jpg");
-                cut=cut%5;
-            }
-            else{
-                cut=1;
+            // var mimg=document.getElementById("img1");
+            // if(cut<6){
+            //     mimg.setAttribute("src","chage"+(++cut)+".jpg");
+            //     cut=cut%5;
+            // }
+            // else{
+            //     cut=1;
                
-               }
+            //    }
+            var mimg=document.getElementById("img1");
+            cut++;
+            if(cut>=imglist.length) //cut가 imglist 배열범위를벗어남(마지막 이미지에서 버튼을 더 누를시)
+            {
+                cut=0;      //cut를0으로줘서 0번째이미지를보여주고 0 1 2 3 4 0 1 2 3 4
+            }
+            
+            mimg.src=imglist[cut];
+
         }
         
         function changeimgL(){
             var mimg=document.getElementById("img1");
-            if(cut>1){
-                mimg.setAttribute("src","chage"+(--cut)+".jpg");
-               
-            }else{
-                cut=6;
-                
+            cut--;
+            if(cut<0) //0보다작을시 4번째이미지를보여주고, --한다.4 3 2 1 0 4 3 2 1 0
+            {
+                cut=4;
             }
-            
+            mimg.src=imglist[cut];
         }
         
     </script>
