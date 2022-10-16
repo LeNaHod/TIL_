@@ -10,20 +10,12 @@
         var cut=0;
         var imglist=["chage1.jpg","chage2.jpg","chage3.jpg","chage4.jpg","chage5.jpg"]
         function changeimgR(){
-            // var mimg=document.getElementById("img1");
-            // if(cut<6){
-            //     mimg.setAttribute("src","chage"+(++cut)+".jpg");
-            //     cut=cut%5;
-            // }
-            // else{
-            //     cut=1;
-               
-            //    }
+
             var mimg=document.getElementById("img1");
             cut++;
-            if(cut>=imglist.length) //cut가 imglist 배열범위를벗어남(마지막 이미지에서 버튼을 더 누를시)
+            if(cut>=imglist.length)
             {
-                cut=0;      //cut를0으로줘서 0번째이미지를보여주고 0 1 2 3 4 0 1 2 3 4
+                cut=0;
             }
             
             mimg.src=imglist[cut];
@@ -33,16 +25,17 @@
         function changeimgL(){
             var mimg=document.getElementById("img1");
             cut--;
-            if(cut<0) //0보다작을시 4번째이미지를보여주고, --한다.4 3 2 1 0 4 3 2 1 0
+            if(cut<0) 
             {
                 cut=4;
             }
             mimg.src=imglist[cut];
         }
-        
+
     </script>
 </head>
 <body>
+    <nav>
     <div class="oracletop">
         <img src="./as.PNG" id="gless">
                 <a href="https://www.oracle.com/kr/corporate/contact/" id="contact">영업팀에 문의</a>
@@ -63,7 +56,8 @@
         <a href="#developer">개발자</a>
         <a href="#evt">이벤트</a>
     </ul>
-    </div> 
+    </div>
+    </nav> 
     <div class="tbcdiv">
         <div id="topimg">
             <img src="rh08-top-bg (1).webp">
@@ -145,6 +139,338 @@
             <a href="https://www.oracle.com/news/announcement/oracle-opens-first-cloud-region-in-spain-2022-09-13/">Read the release</a>
         </div>
     </div>
+    <section id="base_section_cloud">
+        <div id="base_section_cloud_div">
+            <div id="h2_div_cloud">
+                <h2>비즈니스 현대화에 맞춰 설계된 완벽한 엔터프라이즈 클라우드</h2>
+            </div>
+            <div id="h2_div_cloud_red"></div>
+
+            <div id="h4_div_cloud">
+                <h4 id="h4_cloud">클라우드 애플리케이션</h4>
+                <p>AI가 내장된 Oracle의 통합 애플리케이션 제품군은 필수 비즈니스 프로세스들을 연결하여
+                    일관된 소비자 경험을 제공하며 고객은 업무 효율을 개선할 수 있습니다.
+                </p>
+                <a href="https://www.oracle.com/kr/applications/">클라우드 앱 알아보기</a>
+            </div>
+            <div id="cloudapp_div">
+                <div id="erp">
+                    <span>전사적 자원 관리<br>(ERP)</span>
+                </div>
+                <button id="cloudbtn"></button>
+
+                <div id="scm">
+                    <span>공급망 관리(SMC)</span>
+                </div>
+                <button id="scmbtn"></button>
+                    
+                <div id="hcm">
+                    <span>인적 자본 관리<br>(HCM)</span>
+                </div>
+                <button id="hcmbtn"></button>
+
+                <div id="cx">
+                    <span>광고 및 고객 경험<br>(CX)</span>
+                </div>
+                <button id="cxbtn"></button>
+
+                <div id="industry">
+                    <span>산업별<br>애플리케이션</span>
+                </div>
+                <button id="industrybtn"></button>
+
+                <div id="isv">
+                    <span>ISV 및 사용자정의<br>애플리케이션</span>
+                </div>
+                <button id="isvbtn"></button>
+
+            </div>
+        </div>
+        <div id="h4_div_Infra">
+            <h4 id="h4_Infra">클라우드 인프라</h4>
+            <p>웹 스케일 방식의 클라우드 기반 필수 워크로드를 모두 실행할수 있도록 설계된 클라우드 인프라 
+                서비스를 이용하면 효율적인 비용으로 안전하고 선제적인 IT 운영이 가능합니다.
+            </p>
+            <a id="h4_Infra_a"href="https://www.oracle.com/kr/cloud/">OCI알아보기</a>
+        </div>
+        <div id="Infra_div">
+            <div id="Infra_div_row1_in1">
+                <span>개발자 서비스</span>
+            </div>
+            <button id="row1_in1btn"></button>
+
+            <div id="Infra_div_row1_in2">
+                <span>애플리케이션  통합</span>
+            </div>
+            <button id="row1_in2btn"></button>
+
+            <div id="Infra_div_row1_in3">
+                <span>분석 및 BI</span>
+            </div>
+            <button id="row1_in3btn"></button>
+
+            <div id="Infra_div_row1_in4">
+                <span>머신 러닝 및 AI</span>
+            </div>
+            <button id="row1_in4btn"></button>
+
+            <div id="Infra_div_row1_in5">
+                <span>데이터<BR>레이크하우스</span>
+            </div>
+            <button id="row1_in5btn"></button>
+
+            <div id="Infra_div_row1_in6">
+                <span>컴퓨팅</span>
+            </div>
+            <button id="row1_in6btn"></button>
+
+
+            <div id="Infra_div_row2_in1">
+                <span>스토리지</span>
+            </div>
+            <button id="row2_in1btn"></button>
+
+            <div id="Infra_div_row2_in2">
+                <span>컨테이너 및 함수</span>
+            </div>
+            <button id="row2_in2btn"></button>
+
+            <div id="Infra_div_row2_in3">
+                <span>네트워킹</span>
+            </div>
+            <button id="row2_in3btn"></button>
+
+            <div id="Infra_div_row2_in4">
+                <span>Oracle Databases</span>
+            </div>
+            <button id="row2_in4btn"></button>
+
+            <div id="Infra_div_row2_in5">
+                <span>오픈 소스<BR>데이터베이스</span>
+            </div>
+            <button id="row2_in5btn"></button>
+
+            <div id="Infra_div_row2_in6">
+                <span>VMware 네이티브</span>
+            </div>
+            
+            <div id="Infra_div_row3">
+                <span>보안,관찰가능성 및 관리,규정 준수, 원가 관리 및 거버넌스</span>
+            </div>
+            <button id="row3_btn"></button>
+
+        </div>
+        <div id="Infra_div_row4">
+            <span>글로벌 클라우드 데이터 센터 인프라<br>40개의 상용 및 정부 기관 리전 | Cloud@Customer | 
+            전용 리전 | 에지 컴퓨팅 장치</span>
+        </div>
+        <button id="row_btn4"></button>
+        
+    </section>
+
+    <section id="base_section_client">
+        <div>
+            <div id="h2_div_client">
+                <h2>40만 이상의 고객들이 Oracle을 신뢰하는 이유를 확인해 보십시오.</h2>
+                <a href="https://www.oracle.com/kr/customers/">모든 고객 사례 둘러보기</a>
+            </div>
+
+            <div id="experian_logo_div"><img src="experian-logo-clr.svg" id="experian_logo"></div>
+            <div id="FedEx_logo_div"><img src="customerlogo-fedex-v2-blk.svg" id="FedEx_logo"></div>
+            <div id="Hormel_logo_div"><img src="customerlogo-hormel-blk.svg" id="Hormel_logo"></div>
+            <div id="Johnson_logo_div"><img src="johnson-controls-blk.svg" id="Johnson_logo"></div>
+            <div id="Siemens_logo_div"><img src="customerlogo-siemens-blk.svg" id="Siemens_logo"></div>
+            <div id="Toyota_logo_div"><img src="customerlogo-toyota-blk.webp" id="Toyota_logo"></div>
+            <div id="Blank_logo_div"></div>  
+            </div>
+            <div>
+                <img id="experina_banner" src="experian-hero-banner-v3.webp">
+
+                <div id="Experian_Introduce">
+                    <div id="Experian_Introduce_title">하이테크</div>
+                    <p>Experian은 중요한 데이터와 툴을 Oracle Cloud Infrastructure로 전환하여
+                         40%의 성능 향상과 60%의 비용 절감 효과를 보고 있습니다.</p>
+                    <div id="Experian_Introduce_btn">
+                        <a href="https://www.oracle.com/kr/customers/experian/">Experian 사례 읽기</a>
+                    </div>
+                </div>
+            </div>
+
+            <section id="base_section_solution">
+                <div id="h2_div_solution"><h2>산업별 솔루션 둘러보기</h2></div>
+
+                <ul id="solution_list">
+                    <li id="row_list1">
+                        <img src="car.png">
+                        <a href="https://www.oracle.com/kr/industries/automotive/">자동차</a>
+                    </li>
+
+                    <li id="row_list2">
+                        <img src="wifi.png">
+                        <a href="https://www.oracle.com/kr/industries/automotive/">통신</a>
+                    </li>
+
+                    <li id="row_list3">
+                        <img src="erection.PNG">
+                        <a href="https://www.oracle.com/kr/industries/automotive/">건설 및 엔지니어링</a>
+                    </li>
+                    <li id="row_list4">
+                        <img src="box.png">
+                        <a href="https://www.oracle.com/kr/industries/automotive/">소비재</a>
+                    </li>
+
+                    <li id="row2_list1">
+                        <img src="energy.PNG">
+                        <a href="https://www.oracle.com/kr/industries/utilities/">에너지와 수자원</a>
+                    </li>
+
+                    <li id="row2_list2">
+                        <img src="bank.PNG">
+                        <a href="https://www.oracle.com/kr/industries/financial-services/">금융</a>
+                    </li>
+
+                    <li id="row2_list3">
+                        <img src="food.PNG">
+                        <a href="https://www.oracle.com/kr/industries/food-beverage/">식음료</a>
+                    </li>
+                    <li id="row2_list4">
+                        <img src="education.PNG">
+                        <a href="https://www.oracle.com/kr/industries/government/">정부 기관 및 교육</a>
+                    </li>
+
+                    <li id="row3_list1">
+                        <img src="health.PNG">
+                        <a href="https://www.oracle.com/kr/industries/healthcare/">헬스케어</a>
+                    </li>
+
+                    <li id="row3_list2">
+                        <img src="service.PNG">
+                        <a href="https://www.oracle.com/kr/industries/hospitality/">서비스업</a>
+                    </li>
+
+                    <li id="row3_list3">
+                        <img src="Produce.PNG">
+                        <a href="https://www.oracle.com/kr/industries/industrial-manufacturing/">제조</a>
+                    </li>
+                    <li id="row3_list4">
+                        <img src="science.PNG">
+                        <a href="https://www.oracle.com/kr/industries/life-sciences/">생명 과학</a>
+                    </li>
+
+                    <li id="row4_list1">
+                        <img src="media.PNG">
+                        <a href="https://www.oracle.com/kr/industries/media-entertainment/">미디어 및 엔터테인먼트</a>
+                    </li>
+
+                    <li id="row4_list2">
+                        <img src="safety.PNG">
+                        <a href="https://www.oracle.com/industries/government/state-local/public-safety/">치안</a>
+                    </li>
+
+                    <li id="row4_list3">
+                        <img src="store.PNG">
+                        <a href="https://www.oracle.com/kr/industries/retail/">소매</a>
+                    </li>
+                    <li id="row4_list4">
+                        <img src="travel.PNG">
+                        <a href="https://www.oracle.com/kr/industries/travel-transportation/">여행 및 운송</a>
+                    </li>
+
+                </ul>
+            </section>
+            
+        </div>
+    </section>
+    <section id="base_section_grobal">
+        <div id="base_div_grobal"></div>
+            <div id="h2_div_grobal">
+                <h2>Oracle Cloud 글로벌 리전</h2>
+            </div>
+            <div id="h2_div_grobal_red"></div>
+
+            <div id="a_div_grobal">
+                <a href="https://www.oracle.com/kr/cloud/cloud-regions/">Oracle Colud 리전 자세히 알아보기</a>
+            </div>
+
+            <div id="p_div_grobal">
+                <p>40개의 상호 연결된 리전을 통해 운영되는 Oracle Cloud는 완전한 Oracle Cloud Applications 제품군 및 100개 이상의 Oracle Cloud Infrastructure 
+                    서비스를 제공합니다. 4개의 신규 리전이<br>추가로 개소될 예정입니다.</p>
+            
+            </div>
+
+            <div>
+                <img id="map" src="rc115-oci-map-v10.webp">
+            </div>
+            <ul id="local_icon">
+                <li><img id="current_area" src="rc115-oci-legend-current.svg">현재 지역</li>
+                <li><img id="future_area" src="rc115-oci-legend-future.svg">곧 출시될 지역</li>
+                <li><img id="azure_area" src="rc115-oci-legend-azure.svg">Azure 상호 연결</li>
+
+            </ul>
+    </section>
+    
+    <section id="section_bottom">
+        <nav id="nav_bottom">
+            <ul id="bottom_ul1"> 리소스<br><br>
+               <a href="#">채용</a><br>
+               <a href="#">개발자</a><br>
+               <a href="#">투자자</a><br>
+               <a href="#">파트너</a><br>
+               <a href="#">연구원</a><br>
+               <a href="#">학생 및 교사</a>
+            </ul>
+
+            <ul id="bottom_ul2"> Orcale을 선택해야하는<br>이유<br><br>
+                
+                <a href="#">분석가 보고서</a><br>
+                <a href="#">Cloud ERP 부문 Garthner MQ</a><br>
+                <a href="#">클라우드 경제학</a><br>
+                <a href="#">기업의 책임</a><br>
+                <a href="#">다양성과 포용성</a><br>
+                <a href="#">보안 정책</a>
+             </ul>
+
+             <ul id="bottom_ul3"> 알아보기<br><br>
+                
+                <a href="#">클라우드 컴퓨팅이란?</a><br>
+                <a href="#">CRM이란?</a><br>
+                <a href="#">Docker란?</a><br>
+                <a href="#">Kubernetes란?</a><br>
+                <a href="#">Python이란?</a><br>
+                <a href="#">SaaS란?</a>
+             </ul>
+
+             <ul id="bottom_ul4">새로운 소식<br><br>
+                
+                <a href="#">뉴스</a><br>
+                <a href="#">Oracle CloudWorld</a><br>
+                <a href="#">Oracle과 Premier League</a><br>
+                <a href="#">Oracle Red Bull Racing</a><br>
+                <a href="#">Oracle 지속가능성</a><br>
+                <a href="#">직원 경험 플랫폼</a>
+             </ul>
+
+             <ul id="bottom_ul5">문의하기<br><br>
+                
+                <a href="#">영업 팀: 080-2194-114</a><br>
+                <a href="#">어떻게 도와드릴까요?</a><br>
+                <a href="#">이메일로 구독하기</a><br>
+                <a href="#">이벤트</a><br>
+                <a href="#">블로그</a><br>
+             </ul>
+        </nav>
+        <div class="div_bottom_a1">
+            <img src="country_icon.PNG">
+            <a href="#">국가/지역</a>
+            <a href="#">&copy; 2022 Orcale &nbsp;&nbsp;|</a>
+            <a href="#">이용 약관 및 개인 정보 처리 방침 쿠키 환경설정</a>
+            <a href="#">광고선택</a>
+            <a href="#">채용</a>
+            <img src="facebook_logo.PNG">
+            <img src="ins_logo.PNG">
+            <img src="yot_logo.PNG">
+        </div>
+    </section>
 
 
   
