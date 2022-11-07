@@ -28,7 +28,7 @@ node2.left=node3
 
 node4=TreeNode()
 node4.data='쯔위'
-node3.right=node4
+node2.right=node4
 
 node5=TreeNode()
 node5.data='문별'
