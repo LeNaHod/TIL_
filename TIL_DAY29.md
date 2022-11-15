@@ -403,7 +403,7 @@ nums.collect()
 nums.sortBy(lambda x: x[0]).collect() # 오름차순, 지금 위의 예제는 한개의형태이기때문에 
 ->nums.sortBy(lambda x: x).collect() # 이렇게해야 정상작동
 
-nums.sortBy(lambda x: x[1]).collect() # 내림차순
+
 
 # glom 
 
