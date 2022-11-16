@@ -84,6 +84,8 @@ localhost:9870 : 9870포트에서 확인
 
     하둡의 anengers의 part(파티션)을다가져온다.
 
+
+
 **rdd의 파티션 갯수변경 방법**
 
 |이름|설명|예시|
@@ -91,6 +93,8 @@ localhost:9870 : 9870포트에서 확인
 |repartition()|파티션 늘리기/줄이기 둘다가능 셔플o|RDD.repartition</br>(numPartitions: int) ->지정한 파티션갯수를가진 새로운 rdd반환한다.</br>coalesce를기반으로 작동한다.|
 |coalesce()|파티션 줄이기만가능 셔플x(기본값이 셔플을하지않음.</br> 늘리려면 셔플을true로바꿔줘야함)|rdd.coalesce (numPartitions: Int, shuffle: Boolean = false)->새로운rdd반환.기본값 셔플false|
 |셔플|컴퓨터가 알아서 내부에서 정렬하는작업.</br> 정렬된값을가지고 우리가지정한 동작을수행| reduce,Bykey등등|
+
+**하둡에 파일을 올릴때 중복된 디렉터리에는 업로드X. 덮어쓰기도 안된다. 새로운 디렉터리에 욜려야함. (파티션 갯수를변경해서 같은 디렉터리에 올리는것도X)**
 
 ```python
 ex)

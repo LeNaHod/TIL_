@@ -27,7 +27,7 @@
 sudo vim ~/.bashrc
 
 #hadoop
-export HADOOP_HOME=/home/big/hadoop
+export HADOOP_HOME=/home/big/hadoop ->big는 계정명
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
@@ -74,7 +74,7 @@ hdfs-site.xml
 mapred-site.xml
 
 <property>
-	<name>mapreduce.framework.name</name> #vlaue값에 맵리듀스를 어떤 모드로 실행할지 설정한다. 두가지 모드가 있다 yarn/local local모드는 JVM 1개. 디버깅이나 테스트용도에 적합하고, yarn은 그냥 yarn으로 실행
+	<name>mapreduce.framework.name</name> #vlaue값에 맵리듀스를 어떤 모드로 실행할지 설정한다. 두가지 모드가 있다 yarn/local local모드는 JVM 1개. 디버깅이나 테스트용도에 적합하고, yarn으로 설정하면 하둡에올라감.이부분이 local이면 localhost:9870했을때 안올라간다.
 	<value>yarn</value>
 </property>
 
