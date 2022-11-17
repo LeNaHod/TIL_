@@ -16,7 +16,8 @@ sudo apt install ssh-askpass -y
 **공개키암호화(암복호화다른거).암호안묻고 로그인하는설정**
 
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-cat ~/.shh/id_rsa.pub >> ~/.ssh/authorize_keys
+cat ~/.shh/id_rsa.pub >> ~/.ssh/authorized_keys
+
 
 2.아마존 corretto=java 설치(11버전설치할것임. 버전은자유)
 
@@ -112,6 +113,8 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 #export hadoop_pid_dir=/temp ->원래주석으로 되어있던부분 
 ->export hadoop_pid_dir=$HADOOP_HOME/pids
 
+
+
 #export JAVA_HOME=
 ->export JAVA_HOME=/home/계정명/java
 # export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop 주석되어있다면 해제
@@ -188,9 +191,6 @@ jps로 확인
 namenode, datanode, naodemanager , secondaryNameNode, ResourceManager 가 최소
 
 
-
-
-
 ```
 
 
@@ -205,7 +205,78 @@ wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-without-hadoop.t
 tar -xvzf 
 ln -s spark
 
-2022-11-15 설치오류:
+hadoop설치떄와 비슷한 방식으로 진행한다.
+
+```python
+sudo vim ~/.bashrc 아래내용 추가 후 source ~/.bashrc
+
+# spark
+export SPARK_HOME=/home/na/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+
+1.cd $SPARK_HOME/conf 
+1-1 계정명@ubuntu:~/spark/conf$ 경로에서 작업
+
+2.cp workers.template workers >이부분은 hadoop과다름!
+
+3.cp spark-env.sh.template spark-env.sh
+
+4.vim spark-env.sh 
+
+제일 하단에 아래내용 작성
+
+export YARN_CONF_DIR=/home/계정명/hadoop/etc/hadoop
+export HADOOP_CONF_DIR=/home/계정명/hadoop/etc/hadoop
+export SPARK_DIST_CLASSPATH=$(/home/계정명/hadoop/bin/hadoop classpath)
+export JAVA_HOME=/home/계정명/java
+
+export PYSPARK_PYTHON=/usr/bin/python3
+export PYSPARK_DRIVER_PYTHON=/usr/bin/python3
+
+5.spark-defaults.conf
+
+★cp spark-defaults.conf.template spark-defaults.conf 를 실행하여
+
+spark-defaults.conf 을 생성해주자.
+
+vim spark-defaults.conf
+↓
+
+# Example: ~~ 제일하단부분에 주석없이 아래 내용추가
+
+spark.master                              yarn
+
+6.pyspark 실행
+
+start-all.sh -> pyspark -> spark로고 확인 / master:yarn확인
+```
+
+6.Rdd를 하나 생성하여 하둡에 파일을 올려보자
+
+test=[1,2,3,"Abc,Def",'Gh'] 테스트 데이터 생성
+rdd01=sc.parallelize(test,3) parallelize를 통해 rdd로 변환. 파티션은3개
+rdd01.collect() rdd 확인.
+
+rdd01.saveAsTextFile('/rddtest01') 하둡에 올리기 rddtest01이라는 디렉터리안에(없으면 생성)
+================================
+2022-11-15 - 2022-11-16 설치오류:
 jps시 
 ResourceManager만 나옴
+
+↓↓↓↓↓↓
+
+2022-11-17 
+오류해결!
+
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorize_keys
+↓↓↓↓↓↓
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 바꿔서 재실행
+
+authorized_keys 에 d가빠져서 오타가되어서,제대로 ssh에 문제가생김.
+
+>error=localhost: 계정명@localhost: Permission denied (publickey,password).
+================================
+
+
+
 
