@@ -279,7 +279,7 @@ card2010=spark.read.option('header','true').csv('card_data/csv/202010.csv')
 card2010.write.format('csv').mode('overwrite').save('/temp/csv')
 
 (파이어폭스/확인용)
-localhost:9870 ->(권한 바꿔주기)
+localhost:9870 
 
 #json
 
@@ -315,7 +315,7 @@ jsonDf.write.format('json').mode('overwrite').save('/tmp/json')
 
 hdfs dfs -cat /tmp/json/*.json
 
-# 일반적인 json 구조 : {k : {}, {] ...}
+# 일반적인 json 구조 : {k : {}, {} ...}
 # 스파크의 json 구조 : {} {} {} {}... 
 
 ->★그래서 스파크에서 json으로 저장하는거보단 다른형태로 저장하는게 좋다!
@@ -553,7 +553,7 @@ sudo systemctl enable mysql ->서비스돌아가는 상태에서! 코드실행 �
 
 3.원하는계정으로 접속해서 비밀번호를 변경해주고,자동로그인하자
 ==============================================================
-★루트부분은 계정명 쓰고싶은 계정명을 넣으면된다 패스워드부분도 쓰고싶은걸로
+★쓰고싶은 계정명을 넣으면된다 패스워드부분도 쓰고싶은걸로
 sudo mysql -u 계정명
 
 alter user '계정명'@'localhost' identified with mysql_native_password by 비밀번호입력

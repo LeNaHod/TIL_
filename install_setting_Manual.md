@@ -1,6 +1,6 @@
 # 가상머신 하둡,스파크설치
 
-1.업데이트&기본설치
+## 1.업데이트&기본설치
 
 sudo apt update
 
@@ -19,7 +19,9 @@ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 cat ~/.shh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 
-2.아마존 corretto=java 설치(11버전설치할것임. 버전은자유)
+## 2.아마존 corretto=java 설치
+
+(11버전설치할것임. 버전은자유)
 
 wegt [tar xvzf amazon-corretto-11-x64-linux-jdk.tar.gz](https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.tar.gz)
 
@@ -54,7 +56,7 @@ vim에서 저장하고
 
 ```
 
-3.python 설치 & 설정
+## 3.python 설치 & 설정
 
 sudo apt install python3-pip -y
 
@@ -65,17 +67,16 @@ sudo vim ~/.bashrc
 alias python=python3
 ```
 
-4.아파치 hadoop 설치 & 설정
+## 4.아파치 hadoop 설치 & 설정
 
 스파크에 하둡이 같이들어있는 패키지가있는데,
+
 이것은 하둡실행을 위한 **라이브러리** 이므로 하둡을 데이터저장용도로 사용하고싶으면,
 하둡을 따로 설치하는것을 권장.
 
 
 
-다운로드(hadoop3.3.4버전을 설치할것임)
-
-**source말고 binary를 이용하자** 
+**다운로드(hadoop3.3.4버전을 설치할것,source말고 binary를 이용하자)**
 
 홈페이지 -> 다운로드 -> 3.3.4 바이너리 클릭-> .tar링크복사 -> 터미널에 아래코드입력
 
@@ -194,7 +195,7 @@ namenode, datanode, naodemanager , secondaryNameNode, ResourceManager 가 최소
 ```
 
 
-5.Spark 설치 & 설정
+## 5.Spark 설치 & 설정
 
 **스파크 3.2.2를 다운로드받자**
 
@@ -250,18 +251,21 @@ spark.master                              yarn
 
 start-all.sh -> pyspark -> spark로고 확인 / master:yarn확인
 ```
+## 6.어플리케이션 생성을 위한 pyspark설치
 
-6.Rdd를 하나 생성하여 하둡에 파일을 올려보자
+어플리케이션 생성 == .py생성 
 
-test=[1,2,3,"Abc,Def",'Gh'] 테스트 데이터 생성
-rdd01=sc.parallelize(test,3) parallelize를 통해 rdd로 변환. 파티션은3개
-rdd01.collect() rdd 확인.
+spark릴리즈 버전에 맞는 pyspark설치
 
-rdd01.saveAsTextFile('/rddtest01') 하둡에 올리기 rddtest01이라는 디렉터리안에(없으면 생성)
-================================
+## 7.mysql설치
+
+## 8.Zeppelin NootBook설치
+
+-----
+
 2022-11-15 - 2022-11-16 설치오류:
-jps시 
-ResourceManager만 나옴
+
+jps시 ResourceManager만 나옴
 
 ↓↓↓↓↓↓
 
@@ -269,13 +273,16 @@ ResourceManager만 나옴
 오류해결!
 
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorize_keys
+
 ↓↓↓↓↓↓
+
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 바꿔서 재실행
 
 authorized_keys 에 d가빠져서 오타가되어서,제대로 ssh에 문제가생김.
 
 >error=localhost: 계정명@localhost: Permission denied (publickey,password).
-================================
+
+--------
 
 
 
