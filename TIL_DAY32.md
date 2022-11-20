@@ -325,7 +325,7 @@ hdfs dfs -cat /tmp/json/*.json
 parauet:spark 컬럼 기반 데이터 저장형식
 orc : hadoop컬럼 기반 데이터 저장형식
 db : 하이브,오라클,마이에스큐엘,몽고,카산드라
-text 
+text : text
 
 
 # 어플리케이션 생성/ 버전 & install
@@ -438,7 +438,7 @@ localhost:8987
 
 
 7. Interpreters 설정
-8987에서 어노니먼스 ->  Interpreters ->spark 검색 ->edit클릭
+8987에서 어노니먼스 ->  Interpreter ->spark 검색 ->edit클릭
 
 edit모드가되면
 
@@ -485,7 +485,7 @@ commons-lang3-3.12.0.jar ->얘때문에 오류남 java버전이안맞아서 나�
 
 # commons-lang3 다운로드작업
 
-https://commons.apache.org/proper/commons-lang/ 접속 ->우측에 다운로드클릭->
+https://commons.apache.org/proper/commons-lang/ 접속 ->좌측에 다운로드클릭->
 commons-lang-2.6-bin.tar.gz 다운로드 링크복사
 
 cd 최상위로와서
@@ -554,7 +554,9 @@ sudo systemctl enable mysql ->서비스돌아가는 상태에서! 코드실행 �
 3.원하는계정으로 접속해서 비밀번호를 변경해주고,자동로그인하자
 ==============================================================
 ★쓰고싶은 계정명을 넣으면된다 패스워드부분도 쓰고싶은걸로
+
 sudo mysql -u 계정명
+->mysql을 입력한 계정명으로 시작
 
 alter user '계정명'@'localhost' identified with mysql_native_password by 비밀번호입력
 
@@ -606,7 +608,8 @@ cd /usr/share/java
 
 해놓으면 재플린, 스파크 어디에서든 쓸수있다.
 
-/usr/share/java/mysql-connector-j-8.0.31.jar ->링크를복사하자
+/usr/share/java/mysql-connector-j-8.0.31.jar ->
+우선 경로를 복사해놓자
 
 cd $SPARK_HOME/conf ->경로로 이동 후
 

@@ -89,4 +89,69 @@ card2010=spark.read.format('csv').option('header','true').schema(engColumns).loa
 
 json2010 =spark.read.format('json').load('card_data/json/202010.json')
 -> #json2010=spark.read.json('card_data/json/202010.json')
+
+5. mysql에서db파일 불러오기&저장
+
+mysql접속정보 변수선언
+
+user='계정명'
+password='비밀번호'
+url='jdbc:mysql://localhost:(mysql포트번호)/mysql'
+driver='com.mysql.cj.jdbc.Driver'
+dbtable='테이블 이름'
+
+5-1.불러오기/여러줄
+testDf=spark.read.format("jdbc").option("user",user).option("password",password).option("url",url).option("driver",driver).option("dbtable",dbtable).load()
+
+5-2.불러오기/한줄 option->options
+spark.read.format("jdbc").options(user=user, password=password, url=url, driver=driver, dbtable=dbtable).load()
+
+5-3.spark->mysql 저장
+
+저장할Df.write.jdbc(url,dbtable,"append",properties={"driver":driver, "user":user,"password":password})
+->옵션이 append이기때문에 변수에 저장되어있는 유저테이블에 저장df내용 추가한다.
+
+저장모드 설정
+- append : 추가
+- overwrite : 덮어쓰기
+- errorifexists : 이미 다른파일이 존재할경우 오류를 발생시킴
+
+```
+
+# bash shell service 관련
+
+※권한이없을경우 sudo를 앞에붙인다는 가정
+
+|이름|설명|
+|:---:|:---:|
+|systemctl daemon-reload|서비스등록|
+|systemctl enable 서비스명|서비스 자동활성화|
+|systemctl start 서비스명|서비스 시작|
+|systemctl status 서비스명|서비스 상태|
+|systemctl stop 서비스명|서비스 중지|
+|systemctl disable 서비스명|서비스 비활성화|
+
+## Mysql 유저와 권한설정
+
+```sql
+
+#접속하기
+
+sudo mysql -u 계정명 -p
+
+1-1.sudo mysql -u root
+->설치 후 처음접속할때만 가능비밀번호가 초기화되어있는상태라서 비밀번호없이 접속가능
+
+#해당유저 비밀번호바꾸기
+alter user '계정명'@'localhost / %' identified with mysql_native_password by 
+
+#유저생성하기
+create user '계정명'@'localhost / %' identified by 비밀번호입력
+
+#권한적용하기
+flush privileges;
+
+- with grant option : grant명령어 사용할수있는 권한추가
+- revoke grant option : 권한해제
+- show grants for '계정명'@'localhost / %' : 해당계정 권한 조회
 ```
