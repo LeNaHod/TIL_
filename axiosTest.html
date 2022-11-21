@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 100px;
+        }
+    </style> <!--↓라이브러리이니까 이렇게 가져옴-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+    <script>
+        onload=()=>{//onload:function(){}이랑 같음
+            target_url="https://jsonplaceholder.typicode.com/posts"; //주소를 변수로선언해서 사용
+            btns=document.querySelectorAll("button");
+            btns[0].addEventListener('click',()=>{
+                axios({
+                    method:"get",
+                    url:target_url
+                }).then(function(resp){ //이부분은 => 사용x
+                    alert(JSON.stringify(resp)); //응답된객체를 문자열로 바꿔서 출력할것
+                }) //0번째 버튼을 누르면,지정한 url의 데이터를 get방식으로 가져와 문자열로 바꿔출력한다. 
+                    //지금은 url이 전체내용을가져오는 주소여서 모든 데이터를가져온다.
+
+            });
+            btns[1].addEventListener('click',()=>{ //기본적으로 axios는 헤더와 바디를같이보여주는구조
+                axios({
+                    method:"get",
+                    url:target_url+"/1"
+                }).then(function(resp){ 
+                    alert(JSON.stringify(resp)); 
+                })
+                    
+
+            });
+
+            btns[2].addEventListener('click',()=>{
+                axios({
+                    method:"post", 
+                    url:target_url,
+                    data:{"title":"test","body":"insert"} //data를쓰는이유는 post방식이 insert,create이기때문에 데이터를 같이보내줘야한다.
+                }).then(function(resp){ 
+                    alert(JSON.stringify(resp)); 
+                })
+                  //data를안쓰면 그냥 비어있는상태를 반환함(서버가그렇게반환하게만들어놨음 서버 바이 서버. 404에러뜨는곳도있음)  
+
+            }); 
+        
+            btns[3].addEventListener('click',()=>{
+                axios({
+                    method:"put", 
+                    url:target_url+"/1", //put은 '있는데이터'만 '수정/갱신'이가능하기때문에 특정 리소스지정
+                    data:{"title":"test","body":"update"} 
+                }).then(function(resp){ 
+                    alert(JSON.stringify(resp)); 
+                })
+                    //사용할수있는 method는 버튼의 종류와같다.
+            });     //get all(url만지정), get 1(ulr+리소스), post(생성,추가. url+data:{추가할데이터:딕셔너리형태})
+                    //put(update),delete(삭제)
+            btns[4].addEventListener('click',()=>{
+            axios({
+                    method:"delete", 
+                    url:target_url+"/1", 
+                    data:{"title":"test","body":"update"} 
+                }).then(function(resp){ 
+                    alert(JSON.stringify(resp)); 
+                }) //삭제버튼을 눌러보면 상태 200 뜨고 {} < 잘 비어있는것을 확인할수있다.
+                    
+            });    
+                    
+        }    
+        
+    </script>
+</head>
+<body>
+    <button>GET ALL</button>
+    <br>
+    <button>GET 1</button>
+    <br>
+    <button>POST</button>
+    <br>
+    <button>PUT</button>
+    <br>
+    <button>DELETE</button>
+</body>
+</html>
