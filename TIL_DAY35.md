@@ -1,6 +1,7 @@
-# TIL DAY 35(2022-11-22)
+# TIL DAY 35(2022-11-22~)
 
-## PROJECT2 TEST
+## PROJECT2 TEST 
+(비정기업데이트)
 
 BeautifulSoup 를 사용하는이유
 
