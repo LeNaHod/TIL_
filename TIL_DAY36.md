@@ -85,7 +85,7 @@ class Member(models.Model):
 
 #index.html(장고탬플릿.홈이름이 index)
 
-{%} ->이런식으로되어있는애들은 명령아이고
+{%} ->이런식으로되어있는애들은 명령어이고
 {{}}-> 변수가된다. html의 값이됨
 
 
@@ -94,7 +94,7 @@ class Member(models.Model):
 
 <input type="button" value="Delete" class="my-btn delete-btn layout-right" onclick="deleteMember({{ member.id }}, this);"> ->this  =  클릭 이벤트를 발생시킨 input태그가 된다.그 input태그의 정보
 
-#views(요청이들어왓을때 요청에대한 처리)
+#views(요청이들어왔을때 요청에대한 처리)
 
 
 from django.shortcuts import render,redirect

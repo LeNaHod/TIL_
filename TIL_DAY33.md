@@ -298,6 +298,8 @@ airflow db init
 
 ★airflow 계정추가
 
+▼터미널창에서 입력!
+
 airflow users create \
 --role Admin \	->권한
 --username 아이디 \

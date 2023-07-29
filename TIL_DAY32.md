@@ -280,7 +280,11 @@ card2010.write.format('csv').mode('overwrite').save('/temp/csv')
 
 (파이어폭스/확인용)
 localhost:9870 
+for data in filteredlist : 
+    for item in data :
+           if  item == ' ':
 
+           else : 
 #json
 
 json2010 =spark.read.format('json').load('card_data/json/202010.json')
